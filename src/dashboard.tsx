@@ -15,6 +15,7 @@ interface CheckState {
   اعتراف: boolean;
   ادوات: boolean;
   صلاة: boolean;
+  صوم: boolean;
 }
 
 interface ScannedEntry {
@@ -62,7 +63,9 @@ function Dashboard() {
 
     // Convert data to CSV rows
     const csvRows = data.map((entry) => {
-      const values = headers.map((header) => entry.checks[header] ?? false);
+      const values = headers.map((header) =>
+        entry.checks[header] ? "yes" : "no"
+      );
       // Wrap each value in quotes to handle potential commas in QR codes
       return [`"${entry.qrCode}"`, ...values].join(",");
     });

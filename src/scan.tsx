@@ -9,6 +9,7 @@ function Scan() {
     اعتراف: false,
     ادوات: false,
     صلاة: false,
+    صوم:false
   };
 
   const [scanResult, setScanResult] = useState("");
@@ -137,6 +138,13 @@ function Scan() {
                     label="الصلاة"
                     onChange={handleCheckChange}
                     checked={checkState.صلاة}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    id="صوم"
+                    label="صوم"
+                    onChange={handleCheckChange}
+                    checked={checkState.صوم}
                   />
                 </Form.Group>
               </Form>

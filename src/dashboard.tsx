@@ -74,11 +74,12 @@ function Dashboard() {
     const csvContent = "\uFEFF" + [csvHeaders.join(","), ...csvRows].join("\n");
 
     // Create a Blob and trigger download
+    const date = new Date().toISOString().slice(0, 10); // Get today's date
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", "a3dad_khodam_data.csv");
+    link.setAttribute("download", "a3dad_data_" + date + ".csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -50,7 +50,7 @@ function Scan() {
         { facingMode: "environment" },
         config,
         qrCodeSuccessCallback,
-        (errorMessage) => {}
+        (errorMessage) => { console.log(errorMessage);}
       )
       .catch((err) => {
         setError(`QR Code Scanner failed to start: ${err}`);

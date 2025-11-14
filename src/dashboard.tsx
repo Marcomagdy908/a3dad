@@ -57,12 +57,12 @@ function Dashboard() {
     if (data.length === 0) return;
 
     // Define headers from the first entry's checks object
-    const headers = Object.keys(data[0].checks);
+    const headers = Object.keys(data[0].checks) as (keyof CheckState)[];
     const csvHeaders = ["QR Code", ...headers];
 
     // Convert data to CSV rows
     const csvRows = data.map((entry) => {
-      const values = headers.map((header) => entry.checks[header]);
+      const values = headers.map((header) => entry.checks[header] ?? false);
       // Wrap each value in quotes to handle potential commas in QR codes
       return [`"${entry.qrCode}"`, ...values].join(",");
     });
